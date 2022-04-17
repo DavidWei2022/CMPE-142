@@ -16,30 +16,18 @@
 pthread_t tid[2];
 int counter;
 
-void* multiThreads(void *arg)
-{
-    unsigned long i = 0;
-    counter += 1;
-    printf("\n Job %d started\n", counter);
-
-    for(i=0; i<(0xFFFFFFFF);i++);
-    printf("\n Job %d finished\n", counter);
-
-    return NULL;
-}
-
 int main() {
+
 //	printf("hi");
 	struct linked_list *head = ll_create();
-	struct linked_list *head2= pthread_create(head,NULL,&multiThreads,NULL);
 	printf("length is %d\n", ll_length(head));
 	ll_add(head, 1);
 	printf("length is %d\n", ll_length(head));
-	ll_add(head, 2);
-	ll_add(head, 3);
-	ll_add(head, 5);
-	ll_remove_first(head);
-	ll_remove_first(head);
+	pthread_create(&tid[1], NULL, &ll_add(head,2), NULL);
+	pthread_create(&tid[0],NULL,&ll_add(head,3),NULL);
+	pthread_create(&tid[1], NULL, &ll_add(head,5), NULL);
+	pthread_create(&tid[0], NULL, &ll_remove_first(head), NULL);
+	pthread_create(&tid[1], NULL, &ll_remove_first(head), NULL);
 	printf("length is %d\n", ll_length(head));
 	int test_var = 5;
 	if (ll_contains(head, test_var)) {
