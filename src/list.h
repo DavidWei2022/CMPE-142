@@ -92,7 +92,12 @@ static inline void ll_add(struct linked_list *ll, int value) {
 	new->next = ll->next;
 	ll->val = value;
 	ll->next = new;
-	pthread_mutex_unlock(ll->mutex);
+	if(pthread_mutex_unlock(ll->mutex)){
+		printf("Unlock failed\n");
+	}
+	else{
+		printf("Unlock successful\n");
+	}
 }
 
 static inline bool ll_remove_first(struct linked_list *ll) {
