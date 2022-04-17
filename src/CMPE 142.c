@@ -15,29 +15,29 @@
 
 pthread_t tid[2];
 //int counter;
-struct add_struct {
-	struct linked_list *Addhead;
+struct helper_struct {
+	struct linked_list *Helperhead;
 	int num;
 };
 
 void* add(void *arg) {
 	struct add_struct *addArg = arg;
-	ll_add(addArg->Addhead, addArg->num);
+	ll_add(addArg->Helperhead, addArg->num);
 }
 
 void* delete(void *arg) {
 	struct add_struct *deleteArg = arg;
-	ll_destroy(deleteArg->Addhead);
+	ll_destroy(deleteArg->Helperhead);
 }
 void* remove_first(void *arg) {
 	struct add_struct *removeArg = arg;
-	ll_remove_first(removeArg->Addhead);
+	ll_remove_first(removeArg->Helperhead);
 }
 int main() {
 	struct linked_list *head = ll_create();
 	printf("length is %d\n", ll_length(head));
-	struct add_struct *addArg;
-	addArg->Addhead = head;
+	struct helper_struct *addArg;
+	addArg->Helperhead = head;
 	addArg->num = 1;
 	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
 	addArg->num = 2;
