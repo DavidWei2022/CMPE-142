@@ -115,12 +115,22 @@ static inline bool ll_remove_first(struct linked_list *ll) {
 //if the linked list only has one node, remove the node
 	else if (ll->next == NULL) {
 		//		printf("only one node!\n");
-		pthread_mutex_unlock(ll->mutex);
+		if(pthread_mutex_unlock(ll->mutex)){
+			printf("Unlock failed\n");
+		}
+		else{
+			printf("Unlock successful\n");
+		}
 		ll->val = NULL;
 		ll->next = NULL;
 		return 1;
 	} else {
-		pthread_mutex_unlock(ll->mutex);
+		if(pthread_mutex_unlock(ll->mutex)){
+			printf("Unlock failed\n");
+		}
+		else{
+			printf("Unlock successful\n");
+		}
 		//		printf("so many nodes!\n");
 		struct linked_list *temp = ll->next;
 		//		temp->val = ll->val;
@@ -142,7 +152,12 @@ static inline int ll_contains(struct linked_list *ll, int value) {
 	if (ll == NULL) {
 		return 0;
 	} else {
-		pthread_mutex_unlock(ll->mutex);
+		if(pthread_mutex_unlock(ll->mutex)){
+			printf("Unlock failed\n");
+		}
+		else{
+			printf("Unlock successful\n");
+		}
 		struct linked_list *temp;
 		struct linked_list *head;
 		int position = 1;
