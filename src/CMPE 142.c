@@ -41,8 +41,9 @@ int main() {
 	struct linked_list *head = ll_create();
 	printf("length is %d\n", ll_length(head));
 	ll_add(head, 1);
-	printf("length is %d\n", ll_length(head));
+
 	ll_add(head, 2);
+	printf("length is %d\n", ll_length(head));
 	ll_add(head, 3);
 	ll_add(head, 4);
 	struct add_struct *addArg;
