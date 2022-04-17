@@ -72,11 +72,13 @@ int main() {
 	} else {
 		printf("It does not contains %d\n", test_var);
 	}
-
+	ll_remove_first(head);
 	printf("length is %d\n", ll_length(head));
 	if (ll_destroy(head) == 0) {
 		printf("could not destroy the linked list!\n");
 	}
+	ll_remove_first(head);
+	ll_remove_first(head);
 	ll_remove_first(head);
 	//ll_destroy should not perform its function since the linked list is not empty
 	if (ll_destroy(head) == 1) {
