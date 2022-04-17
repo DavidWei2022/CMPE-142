@@ -8,7 +8,7 @@ struct arg_struct {
 
 void *print_the_arguments(void *arguments)
 {
-    struct arg_struct *args = (struct arg_struct *)args;
+    struct arg_struct *args = args;
     printf("%d\n", args -> arg1);
     printf("%d\n", args -> arg2);
     pthread_exit(NULL);
