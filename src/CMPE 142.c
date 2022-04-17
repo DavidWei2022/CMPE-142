@@ -23,15 +23,21 @@ struct helper_struct {
 void* add(void *arg) {
 	struct helper_struct *addArg = arg;
 	ll_add(addArg->Helperhead, addArg->num);
+	pthread_exit(NULL);
+	return NULL;
 }
 
 void* delete(void *arg) {
 	struct helper_struct *deleteArg = arg;
 	ll_destroy(deleteArg->Helperhead);
+	pthread_exit(NULL);
+	return NULL;
 }
 void* remove_first(void *arg) {
 	struct helper_struct *removeArg = arg;
 	ll_remove_first(removeArg->Helperhead);
+	pthread_exit(NULL);
+	return NULL;
 }
 int main() {
 	struct linked_list *head = ll_create();
