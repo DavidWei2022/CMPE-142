@@ -21,16 +21,16 @@ struct helper_struct {
 };
 
 void* add(void *arg) {
-	struct add_struct *addArg = arg;
+	struct helper_struct *addArg = arg;
 	ll_add(addArg->Helperhead, addArg->num);
 }
 
 void* delete(void *arg) {
-	struct add_struct *deleteArg = arg;
+	struct helper_struct *deleteArg = arg;
 	ll_destroy(deleteArg->Helperhead);
 }
 void* remove_first(void *arg) {
-	struct add_struct *removeArg = arg;
+	struct helper_struct *removeArg = arg;
 	ll_remove_first(removeArg->Helperhead);
 }
 int main() {
