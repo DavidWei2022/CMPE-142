@@ -49,15 +49,15 @@ int main() {
 	struct add_struct *addArg;
 	addArg->Addhead = head;
 	addArg->num = 2;
-//	pthread_create(&hi, NULL, &add, (void*) &addArg);
+	pthread_create(&hi, NULL, &add, (void*) &addArg);
 
 
-	//	addArg->num = 2;
-	//	pthread_create(&hi, NULL, &add, (void*) &addArg);
-//
-//
-	//	addArg->num = 2;
-	//	pthread_create(&hi, NULL, &add, (void*) &addArg);
+		addArg->num = 3;
+		pthread_create(&hi, NULL, &add, (void*) &addArg);
+
+
+		addArg->num = 2;
+		pthread_create(&hi, NULL, &add, (void*) &addArg);
 //
 //
 	pthread_create(&tid[0], NULL, &remove_first, (void*)&addArg);
