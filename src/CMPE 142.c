@@ -59,7 +59,7 @@ int main() {
 	ll_add(head,2);
 
 	printf("length is %d\n", ll_length(head));
-	ll_add(head,5);
+	ll_add(head,4);
 	int test_var = 5;
 	if (ll_contains(head, test_var)) {
 		printf("It contains %d\n", test_var);
