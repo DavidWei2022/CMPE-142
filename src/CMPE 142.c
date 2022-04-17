@@ -23,7 +23,7 @@ struct add_struct{
 
 void *add(void *arg){
 	struct add_struct *addArg =arg;
-	ll_add(addArg->head,addArg->num);
+	ll_add(addArg->Addhead,addArg->num);
 
 }
 
