@@ -13,25 +13,25 @@
 #include "list.h"
 #include <pthread.h>
 
-//pthread_t tid[2];
-//int counter;
+pthread_t tid[2];
+int counter;
 
-//void* multiThreads(void *arg)
-//{
-//    unsigned long i = 0;
-//    counter += 1;
-//    printf("\n Job %d started\n", counter);
-//
-//    for(i=0; i<(0xFFFFFFFF);i++);
-//    printf("\n Job %d finished\n", counter);
-//
-//    return NULL;
-//}
+void* multiThreads(void *arg)
+{
+    unsigned long i = 0;
+    counter += 1;
+    printf("\n Job %d started\n", counter);
+
+    for(i=0; i<(0xFFFFFFFF);i++);
+    printf("\n Job %d finished\n", counter);
+
+    return NULL;
+}
 
 int main() {
 //	printf("hi");
 	struct linked_list *head = ll_create();
-//	struct linked_list *head2= pthread_create(head,NULL,&multiThreads,NULL);
+	struct linked_list *head2= pthread_create(head,NULL,&multiThreads,NULL);
 	printf("length is %d\n", ll_length(head));
 	ll_add(head, 1);
 	printf("length is %d\n", ll_length(head));
