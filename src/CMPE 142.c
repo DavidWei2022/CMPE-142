@@ -23,11 +23,11 @@ int main() {
 	printf("length is %d\n", ll_length(head));
 	ll_add(head, 1);
 	printf("length is %d\n", ll_length(head));
-	pthread_create(&tid[1], NULL, &ll_add(head,2), NULL);
-	pthread_create(&tid[0],NULL,&ll_add(head,3),NULL);
-	pthread_create(&tid[1], NULL, &ll_add(head,5), NULL);
-	pthread_create(&tid[0], NULL, &ll_remove_first(head), NULL);
-	pthread_create(&tid[1], NULL, &ll_remove_first(head), NULL);
+	pthread_create(&tid[1], NULL, ll_add(head,2), NULL);
+	pthread_create(&tid[0],NULL,ll_add(head,3),NULL);
+	pthread_create(&tid[1], NULL, ll_add(head,5), NULL);
+	pthread_create(&tid[0], NULL, ll_remove_first(head), NULL);
+	pthread_create(&tid[1], NULL, ll_remove_first(head), NULL);
 	printf("length is %d\n", ll_length(head));
 	int test_var = 5;
 	if (ll_contains(head, test_var)) {
