@@ -15,7 +15,7 @@
 
 pthread_t tid[2];
 //int counter;
-
+pthread_t hi;
 struct add_struct{
 	struct linked_list *Addhead;
 	int num;
@@ -38,7 +38,7 @@ int main() {
 	struct add_struct *addArg;
 	addArg->Addhead = head;
 	addArg->num = 2;
-	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
+	pthread_create(&hi, NULL, &add, (void*) &addArg);
 
 
 //	pthread_create(&tid[0],NULL,ll_add(head,3),NULL);
