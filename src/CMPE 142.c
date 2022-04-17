@@ -38,7 +38,7 @@ int main() {
 	struct add_struct *addArg;
 	addArg->Addhead = head;
 	addArg->num = 2;
-	pthread_create(&tid[1], NULL, &add(), (void*) &addArg);
+	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
 
 
 //	pthread_create(&tid[0],NULL,ll_add(head,3),NULL);
