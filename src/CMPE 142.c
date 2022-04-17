@@ -15,55 +15,40 @@
 
 pthread_t tid[2];
 //int counter;
-pthread_t hi;
-struct add_struct{
+struct add_struct {
 	struct linked_list *Addhead;
 	int num;
 };
 
-
-void *add(void *arg){
-	struct add_struct *addArg =arg;
-	ll_add(addArg->Addhead,addArg->num);
+void* add(void *arg) {
+	struct add_struct *addArg = arg;
+	ll_add(addArg->Addhead, addArg->num);
 }
 
-void *delete (void *arg){
+void* delete(void *arg) {
 	struct add_struct *deleteArg = arg;
 	ll_destory(deleteArg->Addhead);
 }
-void *remove_first(void *arg){
+void* remove_first(void *arg) {
 	struct add_struct *removeArg = arg;
 	ll_remove_first(removeArg->Addhead);
 }
 int main() {
-
-//	printf("hi");
 	struct linked_list *head = ll_create();
 	printf("length is %d\n", ll_length(head));
-	ll_add(head, 1);
-
-	ll_add(head, 2);
-	printf("length is %d\n", ll_length(head));
-	ll_add(head, 3);
-	ll_add(head, 4);
 	struct add_struct *addArg;
 	addArg->Addhead = head;
+	addArg->num = 1;
+	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
 	addArg->num = 2;
-	pthread_create(&hi, NULL, &add, (void*) &addArg);
+	pthread_create(&tid[0], NULL, &add, (void*) &addArg);
+	printf("length is %d\n", ll_length(head));
+	addArg->num = 3;
+	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
 
-
-		addArg->num = 3;
-		pthread_create(&hi, NULL, &add, (void*) &addArg);
-
-
-		addArg->num = 2;
-		pthread_create(&hi, NULL, &add, (void*) &addArg);
+	pthread_create(&tid[0], NULL, &remove_first, (void*) &addArg);
 //
-//
-	pthread_create(&tid[0], NULL, &remove_first, (void*)&addArg);
-//
-	pthread_create(&tid[0], NULL, &remove_first, (void*)&addArg);
-
+	pthread_create(&tid[1], NULL, &remove_first, (void*) &addArg);
 
 	printf("length is %d\n", ll_length(head));
 	int test_var = 5;
