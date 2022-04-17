@@ -27,7 +27,7 @@ void* add(void *arg) {
 
 void* delete(void *arg) {
 	struct add_struct *deleteArg = arg;
-	ll_destory(deleteArg->Addhead);
+	ll_destroy(deleteArg->Addhead);
 }
 void* remove_first(void *arg) {
 	struct add_struct *removeArg = arg;
