@@ -42,21 +42,24 @@ void* remove_first(void *arg) {
 int main() {
 	struct linked_list *head = ll_create();
 	printf("length is %d\n", ll_length(head));
-	struct helper_struct *addArg;
-	addArg->Helperhead = head;
-	addArg->num = 1;
-	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
-	addArg->num = 2;
-	pthread_create(&tid[0], NULL, &add, (void*) &addArg);
-	printf("length is %d\n", ll_length(head));
-	addArg->num = 3;
-	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
-
-	pthread_create(&tid[0], NULL, &remove_first, (void*) &addArg);
+//	struct helper_struct *addArg;
+//	addArg->Helperhead = head;
+//	addArg->num = 1;
+//	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
+//	addArg->num = 2;
+//	pthread_create(&tid[0], NULL, &add, (void*) &addArg);
+//	printf("length is %d\n", ll_length(head));
+//	addArg->num = 3;
+//	pthread_create(&tid[1], NULL, &add, (void*) &addArg);
 //
-	pthread_create(&tid[1], NULL, &remove_first, (void*) &addArg);
+//	pthread_create(&tid[0], NULL, &remove_first, (void*) &addArg);
+////
+//	pthread_create(&tid[1], NULL, &remove_first, (void*) &addArg);
+	ll_add(head,1);
+	ll_add(head,2);
 
 	printf("length is %d\n", ll_length(head));
+	ll_add(head,5);
 	int test_var = 5;
 	if (ll_contains(head, test_var)) {
 		printf("It contains %d\n", test_var);
